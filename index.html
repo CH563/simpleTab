@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-<head>
-	<meta charset="UTF-8">
-	<title>简单TAB by jQuery</title>
-	<link rel="stylesheet" type="text/css" href="style/style.css">
-</head>
-<body>
-	<h1>简单TAB by jQuery</h1>
-	<div class="wrap">
-		<ul class="tab">
-			<li class="active"><a href="#cont01">tab01</a></li>
-			<li><a href="#cont02">tab02</a></li>
-			<li><a href="#cont03">tab02</a></li>
-			<li><a href="#cont04">tab02</a></li>
-		</ul>
-		<div class="container">
-                        <div id="#cont01" class="content active">这个tab内容11</div>
-                        <div id="#cont02" class="content">这个tab内容22</div>
-                        <div id="#cont03" class="content">这个tab内容33</div>
-			<div id="#cont04" class="content">这个tab内容44</div>
-		</div>
-	</div>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript">
-		$('.tab li a').on('click', function (e) {
-                  e.preventDefault();
-                  $(this).parent().addClass('active');
-                  $(this).parent().siblings().removeClass('active');
-                  target = $(this).attr('href');
 
-                  $('.content').not(target).removeClass('active');
-                  $(target).addClass('active');
-                });
-	</script>
+<head>
+    <meta charset="UTF-8">
+    <title>简单TAB by jQuery</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+
+<body>
+    <h1>简单TAB by jQuery</h1>
+    <div class="tab-wrap">
+        <ul class="tab">
+            <li class="active"><a href="#cont01">tab01</a></li>
+            <li><a href="#cont02">tab02</a></li>
+            <li><a href="#cont03">tab03</a></li>
+            <li><a href="#cont04">tab04</a></li>
+        </ul>
+        <div class="container">
+            <div id="cont01" class="content active">这个tab内容11</div>
+            <div id="cont02" class="content">这个tab内容22</div>
+            <div id="cont03" class="content">这个tab内容33</div>
+            <div id="cont04" class="content">这个tab内容44</div>
+        </div>
+    </div>
+    <div class="tab-wrap">
+        <ul class="tab">
+            <li class="active"><a href="#cont05">tab05</a></li>
+            <li><a href="#cont06">tab06</a></li>
+            <li><a href="#cont07">tab07</a></li>
+            <li><a href="#cont08">tab08</a></li>
+        </ul>
+        <div class="container">
+            <div id="cont05" class="content active">这个tab内容55</div>
+            <div id="cont06" class="content">这个tab内容66</div>
+            <div id="cont07" class="content">这个tab内容77</div>
+            <div id="cont08" class="content">这个tab内容88</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+    (function() {
+	    $(".tab li a").on("click", function(e) {
+	        e.preventDefault();
+	        var tabWrap = $(this).closest(".tab-wrap");
+	        var tabLi = $(this).parent();
+	        tabLi.addClass("active");
+	        tabLi.siblings().removeClass("active");
+	        target = $(this).attr("href");
+	        tabWrap.find(".content").not(target).removeClass("active");
+	        tabWrap.find(target).addClass('active');
+	    });
+    })();
+    </script>
 </body>
+
 </html>

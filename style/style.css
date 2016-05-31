@@ -14,9 +14,9 @@ h1{
 	padding:10px;
 	margin-bottom:20px;
 }
-.wrap{
+.tab-wrap{
 	width:500px;
-	margin:0 auto;
+	margin:0 auto 50px;
 }
 
 .tab{
