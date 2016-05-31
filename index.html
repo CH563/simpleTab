@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>简单TAB by jQuery</title>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+	<h1>简单TAB by jQuery</h1>
+	<div class="wrap">
+		<ul class="tab">
+			<li class="active"><a href="#cont01">tab01</a></li>
+			<li><a href="#cont02">tab02</a></li>
+			<li><a href="#cont03">tab02</a></li>
+			<li><a href="#cont04">tab02</a></li>
+		</ul>
+		<div class="container">
+                        <div id="#cont01" class="content active">这个tab内容11</div>
+                        <div id="#cont02" class="content">这个tab内容22</div>
+                        <div id="#cont03" class="content">这个tab内容33</div>
+			<div id="#cont04" class="content">这个tab内容44</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('.tab li a').on('click', function (e) {
+                  e.preventDefault();
+                  $(this).parent().addClass('active');
+                  $(this).parent().siblings().removeClass('active');
+                  target = $(this).attr('href');
+
+                  $('.content').not(target).removeClass('active');
+                  $(target).addClass('active');
+                });
+	</script>
+</body>
+</html>
