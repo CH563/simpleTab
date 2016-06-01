@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>简单TAB by jQuery</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
@@ -40,16 +40,20 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript">
     (function() {
-	    $(".tab li a").on("click", function(e) {
-	        e.preventDefault();
-	        var tabWrap = $(this).closest(".tab-wrap");
-	        var tabLi = $(this).parent();
-	        tabLi.addClass("active");
-	        tabLi.siblings().removeClass("active");
-	        target = $(this).attr("href");
-	        tabWrap.find(".content").not(target).removeClass("active");
-	        tabWrap.find(target).addClass('active');
-	    });
+	    function tabWarp(tabW) {
+                var tabA = $(tabW).find("ul.tab li a");
+                tabA.on("touchend click", function(e) {
+        	        e.preventDefault();
+        	        var tabWrap = $(this).closest(tabW);
+        	        var tabLi = $(this).parent();
+        	        tabLi.addClass("active");
+        	        tabLi.siblings().removeClass("active");
+        	        target = $(this).attr("href");
+        	        tabWrap.find(".content").not(target).removeClass("active");
+        	        tabWrap.find(target).addClass('active');
+        	    });
+            }
+            tabWarp(".tab-wrap");
     })();
     </script>
 </body>
